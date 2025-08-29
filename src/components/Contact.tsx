@@ -1,34 +1,44 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin } from "lucide-react";
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const { toast } = useToast();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
-    setFormData({ name: '', email: '', message: '' });
-  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    if (!captchaValue) {
+      toast({ title: "Error", description: "Please verify that you are not a robot." });
+      return;
+    }
+
+    emailjs.send(
+      "service_ws6dn1m",
+      "template_hhc95k9",
+      formData,
+      "uduSm5CAOXodhz3Ji"
+    )
+    .then(() => {
+      toast({ title: "Message sent!", description: "Thank you for your message. I'll get back to you soon!" });
+      setFormData({ name: "", email: "", message: "" });
+      setCaptchaValue(null);
+    })
+    .catch(() => {
+      toast({ title: "Error", description: "Something went wrong. Try again later." });
+    });
   };
 
   return (
@@ -39,7 +49,7 @@ const Contact = () => {
             Get In Touch
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to bring your project to life? Let's discuss how we can work together to create something amazing.
+            Ready to bring your project to life? Let's discuss how we can work together.
           </p>
         </div>
 
@@ -81,54 +91,37 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="p-6 border-border/50">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project..."
-                  rows={5}
-                  required
-                />
-              </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full bg-gradient-primary hover:shadow-glow-primary transition-all duration-300"
-              >
+              <Input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                required
+              />
+              <Input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="your.email@example.com"
+                required
+              />
+              <Textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project..."
+                rows={5}
+                required
+              />
+
+              {/* reCAPTCHA */}
+              <ReCAPTCHA
+                sitekey="6LdYw7YrAAAAAH1W2_pkURL5scVvwfP_gzWkRtjd"
+                onChange={(value) => setCaptchaValue(value)}
+              />
+
+              <Button type="submit" className="w-full bg-gradient-primary hover:shadow-glow-primary">
                 Send Message
               </Button>
             </form>
