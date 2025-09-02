@@ -1,6 +1,8 @@
-# Agostina Torres Portfolio
+# Agosro Portfolio
 
 Welcome to my digital portfolio! This project showcases a selection of my work, skills, and projects developed using modern web technologies and best practices.
+
+**Check it live here:** [View Portfolio](https://agosro-portfolio.netlify.app/)
 
 ## 🧰 Technologies Used
 
