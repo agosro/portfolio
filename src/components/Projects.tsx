@@ -5,8 +5,17 @@ import { ExternalLink, Github } from "lucide-react";
 import pomodoroKittyImg from "../assets/pomodoro-kitty.png";
 import suplementsImg from "../assets/suple.png";
 import malbecImg from "../assets/malbec.png";
+import weatherAppImg from "../assets/weather.png";
 
 const projects = [
+  {
+    title: "Weather App",
+    description: "A fun weather web app featuring kittens that change with the weather, with real-time forecasts, language toggle, and a responsive design.",
+    technologies: ["Javascript", "CSS", "HTML"],
+    image: weatherAppImg,
+    github: "https://github.com/agosro/weather-app",
+    live: "https://agosro.github.io/weather-app/"
+  },
   {
     title: "Pomodoro Kitty",
     description: "A simple Pomodoro timer web app with work and break modes, visual/audio alerts, and a responsive design.",
@@ -48,7 +57,7 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-glow-subtle transition-all duration-500 border-border/50 group">
+            <Card key={index} className="overflow-hidden hover:shadow-glow-subtle transition-all duration-500 border-border/50 group flex flex-col">
               <div className="relative overflow-hidden">
                 <img 
                   src={project.image} 
@@ -65,7 +74,7 @@ const Projects = () => {
                 </CardDescription>
               </CardHeader>
               
-              <CardContent>
+              <CardContent className="flex flex-col flex-1">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <Badge key={techIndex} variant="outline" className="text-xs">
@@ -74,7 +83,7 @@ const Projects = () => {
                   ))}
                 </div>
                 
-                <div className="flex gap-3">
+                <div className="flex gap-3 mt-auto">
                   {/* GitHub Button */}
                   <Button 
                     variant="outline" 

@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Code2, Palette, Smartphone, Zap } from "lucide-react";
 
 const skills = [
-  "React", "Javascript", "HTML5", "CSS3", "Git", "Figma", "Responsive Design", "MySQL", "MongoDB", "Testing"
+  "React", "Javascript", "HTML5", "CSS3", "Node.js", "Express.js", "Git", "Figma", "Responsive Design", "MySQL", "MongoDB", "Testing"
 ];
 
 const features = [
