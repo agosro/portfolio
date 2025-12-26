@@ -6,8 +6,25 @@ import pomodoroKittyImg from "../assets/pomodoro-kitty.png";
 import suplementsImg from "../assets/suple.png";
 import malbecImg from "../assets/malbec.png";
 import weatherAppImg from "../assets/weather.png";
+import chatbotImg from "../assets/chatbot.png";
+import tesisImg from "../assets/tesis.png";
 
 const projects = [
+  {
+    title: "School Management System",
+    description: "Comprehensive school management system developed as my thesis. It handles students, teachers, courses, grades, reports, and role-based access control, focusing on scalability and real-world academic workflows.",
+    technologies: ["React", "Vite", "Bootstrap", "JWT", "Java", "Spring Boot", "MySQL"],
+    image: tesisImg,
+    github: "https://github.com/agosro/LuteranoFrontEnd"
+  },
+  {
+    title: "Maestro de los Cuentos",
+    description: "AI-powered storytelling assistant that generates and answers questions about stories using LLMs, embeddings, and RAG techniques, focusing on grounded and context-aware responses.",
+    technologies: ["Python", "React", "Vite", "Tailwind", "LLMs", "RAG", "Embeddings", "Prompt Engineering"],
+    image: chatbotImg,
+    github: "https://github.com/agosro/maestro-de-los-cuentos",
+    live: "https://maestro-de-los-cuentos.netlify.app/"
+  },
   {
     title: "Weather App",
     description: "A fun weather web app featuring kittens that change with the weather, with real-time forecasts, language toggle, and a responsive design.",
