@@ -9,6 +9,7 @@ import weatherAppImg from "../assets/weather.png";
 import chatbotImg from "../assets/chatbot.png";
 import tesisImg from "../assets/tesis.png";
 import sooniImg from "../assets/sooni.png";
+import docuassistImg from "../assets/docuassist.png";
 
 const projects = [
   {
@@ -17,6 +18,13 @@ const projects = [
     technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
     image: sooniImg,
     github: "https://github.com/agosro/ecoomerce-sooni"
+  },
+  {
+  title: "DocuAssist AI - RAG for Technical Documentation",
+  description: "Complete RAG system for technical documentation queries: intent classification, RAG pipeline (ChromaDB + Cohere), automatic filter inference, persistent history, and a React-based UI.",
+  technologies: ["Python", "FastAPI", "React", "Tailwind CSS", "Cohere", "ChromaDB", "SQLite"],
+  image: docuassistImg,
+  github: "https://github.com/agosro/docuassist-ai-pi-data-challenge-final"
   },
   {
     title: "School Management System",
