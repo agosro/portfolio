@@ -8,8 +8,16 @@ import malbecImg from "../assets/malbec.png";
 import weatherAppImg from "../assets/weather.png";
 import chatbotImg from "../assets/chatbot.png";
 import tesisImg from "../assets/tesis.png";
+import sooniImg from "../assets/sooni.png";
 
 const projects = [
+  {
+    title: "SOONI Skincare - E-commerce Website",
+    description: "Full‑stack e‑commerce for Korean skincare. Built as a production‑ready project that covers product catalog, persistent cart, MercadoPago checkout, order tracking, admin dashboard with role‑based access (admin, viewer, demo), Google OAuth, and seed scripts for quick setup. Focused on scalability, real‑world e‑commerce workflows, and an intuitive admin UX for managing products, orders and coupons.",
+    technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
+    image: sooniImg,
+    github: "https://github.com/agosro/ecoomerce-sooni"
+  },
   {
     title: "School Management System",
     description: "Comprehensive school management system developed as my thesis. It handles students, teachers, courses, grades, reports, and role-based access control, focusing on scalability and real-world academic workflows.",
